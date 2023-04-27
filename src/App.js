@@ -1,25 +1,57 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import l1 from './sami.jpg';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      person: {
+        fullName: 'Saafi sami',
+        bio: 'full stack developer',
+        profession: 'Software Developer',
+        imgSrc: l1, 
+      },
+      show: false,
+      intervalId: 10,
+      secondsElapsed: 0,
+    };
+    this.toggleShow = this.toggleShow.bind(this);
+  }
+
+  componentDidMount() {
+    const intervalId = setInterval(() => {
+      this.setState({ secondsElapsed: this.state.secondsElapsed + 1 });
+    }, 1000);
+    this.setState({ intervalId });
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.state.intervalId);
+  }
+
+  toggleShow() {
+    this.setState({ show: !this.state.show });
+  }
+
+  render() {
+    const { person, show, secondsElapsed } = this.state;
+
+    return (
+      <div className="App">
+        <button onClick={this.toggleShow}>Toggle Profile</button>
+        {show && (
+          <div>
+            <img src={person.imgSrc} alt={person.fullName} /> {/* Display the image */}
+            <h1>{person.fullName}</h1>
+            <h2>{person.profession}</h2>
+            <p>{person.bio}</p>
+          </div>
+        )}
+        <p>Seconds Elapsed: {secondsElapsed}</p>
+      </div>
+    );
+  }
 }
 
 export default App;
