@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  font-family: Arial, sans-serif;
 }
 
 .App-logo {
@@ -36,13 +37,65 @@
     transform: rotate(360deg);
   }
 }
-.App {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+
+/* Movie card */
+.movie-card {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px;
 }
 
-.App img {
-  width: 150px;
-  margin-top: 50px;
+.movie-card h2 {
+  font-size: 20px;
+  margin-top: 0;
+}
+
+.movie-card p {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.movie-card img {
+  max-width: 100%;
+}
+
+.movie-card p:last-child {
+  margin-bottom: 0;
+}
+
+/* Filter */
+.filter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.filter label {
+  margin-right: 10px;
+  font-size: 16px;
+}
+
+.filter input {
+  font-size: 16px;
+  padding: 5px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+/* Buttons */
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #0069d9;
 }
