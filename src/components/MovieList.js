@@ -1,23 +1,26 @@
-import React from 'react';
-import MovieCard from './MovieCard';
-import './MovieList.css';
-
-function MovieList(props) {
-  const { movie } = props;
-  
+import React from "react";
+import MovieCard from "./MovieCard";
+import "./MovieList.css";
+const MovieList = ({ Movies, searchName, searchRate }) => {
   return (
-    <div className="movie-list">
-      {movie.map(movie => (
-        <MovieCard 
-          key={movie.id}
+    <div>
+      {Movies.filter(
+        (e) =>
+          e.title
+            .toLowerCase()
+            .trim()
+            .includes(searchName.toLowerCase().trim()) && (e.rate <= searchRate)
+      ).map((movie) => (
+        <MovieCard
           title={movie.title}
           description={movie.description}
-          poster={movie.poster}
-          rating={movie.rating}
+          imageUrl={movie.imgUrl}
+          date={movie.date}
+          rate={movie.rate}
         />
       ))}
     </div>
   );
-}
+};
 
-export default MovieList;
+export default MovieList ;
